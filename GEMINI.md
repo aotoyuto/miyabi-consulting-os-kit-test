@@ -14,7 +14,8 @@ The core idea is to use GitHub Issues for task management, Pull Requests for del
 *   `scripts/miyabi-finish.sh`: A script to finish a task. It runs an optional AI review and creates a Pull Request. (Unix-like systems)
 *   `scripts/miyabi-finish.ps1`: A PowerShell script to finish a task. It creates a Pull Request. (Windows)
 *   `.github/workflows/ai_review.yml`: A GitHub Actions workflow that automatically runs an AI review on every Pull Request.
-*   `scripts/ai/pr_review.sh`: A script that generates a diff of the changes and uses the `claude` CLI to perform an AI review.
+*   `scripts/ai/pr_review.sh`: A script that generates a diff of the changes and uses the `claude` CLI to perform an AI review. (Unix-like systems)
+*   `scripts/ai/pr_review.ps1`: A PowerShell script that generates a diff of the changes and uses the `claude` CLI to perform an AI review. (Windows)
 *   `.claude/hooks/`: A directory containing guardrail scripts to prevent the AI from performing dangerous actions.
 *   `docs/decisions/`: A directory to store Architectural Decision Records (ADRs).
 *   `Makefile`: Contains commands for common tasks:
@@ -50,3 +51,4 @@ The `scripts/github/bootstrap_labels.sh` script creates a set of labels in the G
 *   **2025-12-22:** Analyzed the `scripts/github/bootstrap_labels.sh` script and added a "GitHub Labels" section to `GEMINI.md` to document the labels.
 *   **2025-12-22:** Created `scripts/miyabi-start.ps1`, a PowerShell version of the `miyabi-start.sh` script, to support Windows environments.
 *   **2025-12-22:** Created `scripts/miyabi-finish.ps1`, a PowerShell version of the `miyabi-finish.sh` script, to support Windows environments.
+*   **2025-12-22:** Created `scripts/ai/pr_review.ps1`, a PowerShell version of the `scripts/ai/pr_review.sh` script, to support Windows environments.
