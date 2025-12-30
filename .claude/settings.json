@@ -1,0 +1,45 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash "$CLAUDE_PROJECT_DIR/.claude/hooks/require_context.sh""
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash "$CLAUDE_PROJECT_DIR/.claude/hooks/block_dangerous_bash.sh""
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash "$CLAUDE_PROJECT_DIR/.claude/hooks/block_sensitive_files.sh""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash "$CLAUDE_PROJECT_DIR/.claude/hooks/nudge_commit.sh""
+          }
+        ]
+      }
+    ]
+  }
+}
