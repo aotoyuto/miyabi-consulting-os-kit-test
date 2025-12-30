@@ -2,6 +2,11 @@ param(
     [string]$base_ref = "origin/main"
 )
 
+if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
+    Write-Host "Error: claude CLI is not installed. Please install it."
+    exit 1
+}
+
 git fetch origin 2>$null
 $diff = git diff "${base_ref}...HEAD"
 
@@ -10,4 +15,8 @@ if (-not $diff) {
     exit 0
 }
 
-$diff | claude -p --append-system-prompt "あなたは厳格なレビュワー。危険変更、設計崩れ、テスト不足、抜け漏れを検出し、JSONで返す。keys: summary, risks[], missing_checks[], suggested_tasks[]。" --output-format json --allowedTools "Read" | Set-Content -Path "ai_review.json"
+$prompt = "You are a strict reviewer. Detect dangerous changes, design flaws, lack of tests, and omissions, and return them in JSON format. keys: summary, risks[], missing_checks[], suggested_tasks[]."
+$diff | claude -p `
+    --append-system-prompt $prompt `
+    --output-format json `
+    --allowedTools "Read" | Set-Content -Path "ai_review.json"
