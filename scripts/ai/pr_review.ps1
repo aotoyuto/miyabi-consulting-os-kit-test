@@ -3,7 +3,7 @@ param(
 )
 
 if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
-    Write-Host "Error: claude CLI is not installed. Please install it."
+    Write-Host "claude CLI not found. Exiting."
     exit 1
 }
 
