@@ -7,6 +7,9 @@ if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
     exit 1
 }
 
+# Push the branch to the remote repository
+git push --set-upstream origin (git branch --show-current)
+
 # Optional: AI review (headless) if claude CLI is available
 # if (Get-Command claude -ErrorAction SilentlyContinue) {
 #     bash scripts/ai/pr_review.sh origin/main
