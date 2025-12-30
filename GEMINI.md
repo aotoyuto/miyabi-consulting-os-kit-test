@@ -9,7 +9,8 @@ The core idea is to use GitHub Issues for task management, Pull Requests for del
 ## Key Files
 
 *   `README.md`: The main documentation, explaining the project's purpose, setup, and workflow.
-*   `scripts/miyabi-start.sh`: A script to start a new task. It creates a new Git branch from a specified GitHub Issue.
+*   `scripts/miyabi-start.sh`: A script to start a new task. It creates a new Git branch from a specified GitHub Issue. (Unix-like systems)
+*   `scripts/miyabi-start.ps1`: A PowerShell script to start a new task. It creates a new Git branch from a specified GitHub Issue. (Windows)
 *   `scripts/miyabi-finish.sh`: A script to finish a task. It runs an optional AI review and creates a Pull Request.
 *   `.github/workflows/ai_review.yml`: A GitHub Actions workflow that automatically runs an AI review on every Pull Request.
 *   `scripts/ai/pr_review.sh`: A script that generates a diff of the changes and uses the `claude` CLI to perform an AI review.
@@ -46,3 +47,4 @@ The `scripts/github/bootstrap_labels.sh` script creates a set of labels in the G
 *   **2025-12-22:** Modified `scripts/miyabi-start.sh` to remove `|| true` from the `git pull --rebase` command. This makes the script more robust by ensuring that it will exit if the rebase fails.
 *   **2025-12-22:** Analyzed the `Makefile` and added a description of its commands to the "Key Files" section in `GEMINI.md`.
 *   **2025-12-22:** Analyzed the `scripts/github/bootstrap_labels.sh` script and added a "GitHub Labels" section to `GEMINI.md` to document the labels.
+*   **2025-12-22:** Created `scripts/miyabi-start.ps1`, a PowerShell version of the `miyabi-start.sh` script, to support Windows environments.
