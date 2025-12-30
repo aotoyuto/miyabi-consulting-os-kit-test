@@ -49,3 +49,5 @@ bash scripts/miyabi-finish.sh 123
 
 ---
 このテンプレは「最小で回る」ことを優先しています。ラベル・自動分類・サブエージェント分業などは、運用が回ってから段階的に足します。
+
+This is a test line for the dry run.
